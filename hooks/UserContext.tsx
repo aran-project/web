@@ -46,7 +46,23 @@ export default function UserProvider(props: any) {
   const [err, setErr] = useState<string>('No errors')
 
   useEffect(() => {
+    async function login() {
+      const res = await publicRequest.get(_ME)
+      !res && setErr('No Actual Request from server')
+      if (res.data.err) {
+        
+        setErr(res.data.err)
+        console.log(res.data);
+      } else {
+        console.log('user init ', res.data.user)
+        setUser(res.data.user)
+
+        fetchCart()
+        setLogged(true)
+      }
+    }
     login()
+    console.log('runing fetch user')
   }, [])
 
   async function logout() {
