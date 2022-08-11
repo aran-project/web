@@ -1,7 +1,7 @@
 import { publicRequest } from './apiEndpoints'
 import { useEffect, useState } from 'react'
 
-export const useFetch = (api: string) => {
+const useFetch = (api: string) => {
   const [state, setState] = useState<any>([])
   const [loading, setLoading] = useState<Boolean>(true)
   const [err, setErr] = useState<string | null>(null)
@@ -23,3 +23,4 @@ export const useFetch = (api: string) => {
   }, [api])
   return [state, loading, err]
 }
+export default useFetch

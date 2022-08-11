@@ -1,10 +1,10 @@
 import axios from 'axios'
 export let BASE = 'https://aran-prisma-server.herokuapp.com/'
 // export const BASE_TEST = 'http://localhost:5000/'
-const dev = process.env.NODE_ENV === 'development'
-if (dev) {
-  BASE = 'http://localhost:5000/'
-}
+// const dev = process.env.NODE_ENV === 'development'
+// if (dev) {
+//   BASE = 'http://localhost:5000/'
+// }
 
 export const _ME = 'auth/me'
 export const LOG_IN = 'auth/login'
