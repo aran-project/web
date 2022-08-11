@@ -2,12 +2,13 @@ import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { useContext, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import Modal from '../../components/Modals'
 import Modals from '../../components/Modals'
 
 import SidePanel from '../../components/SidePanel'
 import { UserContext } from '../../hooks/UserContext'
 import { addToCart } from '../../reduc/cartReducer'
-import { publicRequest, _ALL_PRODUCTS } from '../../utils/apiEndpoints'
+import { publicRequest, PRODUCT } from '../../utils/apiEndpoints'
 import { IProduct } from '../../utils/globals'
 
 const features = [
@@ -31,8 +32,11 @@ type pageProps = {
 }
 export default ({ product }: pageProps) => {
   const [isPromptOpen, setPromptOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
   const [isCartOpen, setCartOpen] = useState(false)
+  let err = ''
   const { logged } = useContext(UserContext)
+
   // const pid = useRouter().query.id
   const router = useRouter()
   const dispatch = useDispatch()
@@ -62,6 +66,9 @@ export default ({ product }: pageProps) => {
             onClick={
               async () => {
                 // true or id is successs
+                if (!logged) {
+                  return setModalOpen(true)
+                }
                 const cartProductId = await addItemsToCart({
                   product,
                   quantity: 1,
@@ -121,13 +128,26 @@ export default ({ product }: pageProps) => {
             )
           })}
       </div>
+      {modalOpen && (
+        <Modal
+          key={'Auth modal'}
+          head={"Can't be add to cart"}
+          body={'You have to login to add to cart'}
+          trigFn={() => {
+            router.push('/login')
+            setModalOpen(false)
+          }}
+          goTo={'Login To Continue'}
+          disable={false}
+        />
+      )}
       <SidePanel open={isCartOpen} setOpen={setCartOpen} />
     </div>
   )
 }
 
 export async function getStaticPaths() {
-  const res = await publicRequest.get(_ALL_PRODUCTS)
+  const res = await publicRequest.get(PRODUCT)
   if (!res.data) {
     return {
       paths: [],
@@ -143,7 +163,7 @@ export async function getStaticPaths() {
   }
 }
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const res = await publicRequest.get(_ALL_PRODUCTS + params!.id)
+  const res = await publicRequest.get(PRODUCT + params!.id)
   if (!res.data) {
     return {
       props: {

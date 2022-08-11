@@ -4,7 +4,7 @@ import Modal from '../components/Modals'
 import { UserContext } from '../hooks/UserContext'
 import { RootState } from '../reduc/store'
 import { BuyCartItem } from '../utils/apiCalls'
-import { ORDER, publicRequest, _ALL_PRODUCTS } from '../utils/apiEndpoints'
+import { ORDER, publicRequest, PRODUCT } from '../utils/apiEndpoints'
 export default () => {
   const cartData = useSelector((state: RootState) => state.cart)
   const [modalOpen, setmodalOpen] = useState(false)
@@ -14,7 +14,7 @@ export default () => {
     setStripeKey(token)
   }
 
-  if(cartData.items.length == 0){
+  if (cartData.items.length == 0) {
     return <div>Empty Cart</div>
   }
   return (
@@ -75,14 +75,13 @@ export default () => {
                           <button
                             className="w-full rounded-sm bg-indigo-600 py-4 px-4 text-sm text-white hover:bg-indigo-700 "
                             onClick={() => {
-                              const stripe_checkout_url = BuyCartItem({
-                                address: 'random addres',
-                                pid: product.id,
-                                quantity,
-                                shipmentName: 'bob',
-                              })
-                              console.log(stripe_checkout_url);
-                              
+                              // const stripe_checkout_url = BuyCartItem({
+                              //   address: 'random addres',
+                              //   pid: product.id,
+                              //   quantity,
+                              //   shipmentName: 'bob',
+                              // })
+                              // console.log(stripe_checkout_url)
                             }}
                           >
                             Check Out
@@ -172,7 +171,7 @@ export default () => {
   )
 }
 export async function getStaticProps() {
-  const res = await publicRequest.get(_ALL_PRODUCTS)
+  const res = await publicRequest.get(PRODUCT)
   if (!res.data) {
     return {
       props: {

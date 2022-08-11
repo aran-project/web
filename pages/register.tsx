@@ -4,7 +4,8 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 import React from 'react'
-import { publicRequest, _REGISTER_IN } from '../utils/apiEndpoints'
+import { publicRequest, REGISTER } from '../utils/apiEndpoints'
+import Modal from '../components/Modals'
 
 const Register: NextPage = () => {
   const router = useRouter()
@@ -13,13 +14,14 @@ const Register: NextPage = () => {
     email: '',
     pass: '',
   })
+  const [err, setErr] = useState('')
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = ({
     target,
   }) => setUserDetails({ ...userDetails, [target.name]: target.value })
 
   return (
-    <div className="mx-auto flex h-full w-full max-w-xs flex-col justify-center ">
-      <form className="mb-4 w-full rounded bg-white px-8 pt-6 pb-8 shadow-md">
+    <div className="mx-auto mt-48 flex h-[80%] w-full max-w-xs flex-col items-center justify-center align-middle">
+      <form className="my-auto mb-4 w-full rounded bg-white px-8 pt-6 pb-8 shadow-md">
         <div className="mb-4">
           <label
             className="mb-2 block text-lg font-bold text-gray-700"
@@ -88,15 +90,20 @@ const Register: NextPage = () => {
                 !userDetails.name ||
                 !userDetails.pass
               ) {
-                return alert('Fields Required')
+                return setErr('Field Required')
               }
               console.log(userDetails)
-
-              const res = await publicRequest.post(_REGISTER_IN, userDetails)
-              if (!res.data) {
-                console.log('error login')
+              try {
+                const res = await publicRequest.post(REGISTER, userDetails)
+                console.log('res', res)
+                if (res.data.err) {
+                  return setErr(res.data.err)
+                } else {
+                  router.push('/login')
+                }
+              } catch (error) {
+                return setErr('Something went wrong')
               }
-              router.push('/login')
             }}
           >
             Sign Up
@@ -109,6 +116,17 @@ const Register: NextPage = () => {
       <p className="text-center text-xs text-gray-500">
         &copy;2020 Acme Corp. All rights reserved.
       </p>
+      {err && (
+        <Modal
+          head={'Login Error'}
+          body={err}
+          trigFn={() => {
+            setErr('')
+          }}
+          goTo={'try again'}
+          disable={false}
+        />
+      )}
     </div>
   )
 }

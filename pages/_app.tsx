@@ -7,6 +7,7 @@ import { store } from '../reduc/store'
 type Props = AppProps & {
   Component: any
 }
+// import 'bootstrap/dist/css/bootstrap.css'
 export default ({ Component, pageProps }: Props) => {
   return (
     <Provider store={store}>

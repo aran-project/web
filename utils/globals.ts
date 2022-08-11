@@ -10,6 +10,10 @@ export type IProduct = {
   updatedAt: Date
   deletedAt: Date | null
   size: string[]
+  cateGory?: Array<{
+    id: number | string
+    name: string
+  }>
 }
 export type OrderLineItem = {
   pid: number | string

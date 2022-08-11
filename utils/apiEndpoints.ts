@@ -7,9 +7,9 @@ if (dev) {
 }
 
 export const _ME = 'auth/me'
-export const _LOG_IN = 'auth/login'
-export const _REGISTER_IN = 'auth/register'
-export const _ALL_PRODUCTS = 'product/'
+export const LOG_IN = 'auth/login'
+export const REGISTER = 'auth/register'
+export const PRODUCT = 'product/'
 export const CART_PRODUCTS = 'items'
 export const ADD_PRODUCT_TO_CART = 'addItem'
 export const ORDER = 'order/buy'
