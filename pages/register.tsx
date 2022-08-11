@@ -96,9 +96,10 @@ const Register: NextPage = () => {
               try {
                 const res = await publicRequest.post(REGISTER, userDetails)
                 console.log('res', res)
-                if (res.data.err) {
+                if (res.data && res.data.err) {
                   return setErr(res.data.err)
                 } else {
+                  return setErr('Register Success ! Please Login')
                   router.push('/login')
                 }
               } catch (error) {

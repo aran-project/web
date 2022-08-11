@@ -15,7 +15,7 @@ const navigation = [
 ]
 const Nav: React.FC = () => {
   const { logged, user, err } = useContext(UserContext)
-
+  
   const q = useSelector((state: RootState) => state.cart.quantity)
   return (
     <>

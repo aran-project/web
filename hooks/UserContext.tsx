@@ -50,25 +50,23 @@ export default function UserProvider(props: any) {
       const res = await publicRequest.get(_ME)
       !res && setErr('No Actual Request from server')
       if (res.data.err) {
-        
         setErr(res.data.err)
-        console.log(res.data);
+        console.log(res.data)
       } else {
         console.log('user init ', res.data.user)
         setUser(res.data.user)
-
         fetchCart()
         setLogged(true)
       }
     }
-    login()
+     login() 
     console.log('runing fetch user')
   }, [])
 
   async function logout() {
-    setUser(null)
     setLogged(false)
     setErr('')
+    console.log('logged out')
   }
 
   const dispatch = useDispatch()

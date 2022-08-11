@@ -1,9 +1,11 @@
 import { NextPage } from 'next'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import React from 'react'
 import { publicRequest, LOG_IN } from '../utils/apiEndpoints'
+import { UserContext } from '../hooks/UserContext'
+import Modal from '../components/Modals'
 
 const Login: NextPage = () => {
   const router = useRouter()
@@ -12,11 +14,14 @@ const Login: NextPage = () => {
     pass: '',
     err: 'Please Enter a password.',
   })
+  const [errModalOpen, setErrModalOpen] = useState(false)
+  userDetails.err.length > 5 && setUserDetails({ ...userDetails, err: '' })
+  const { login } = useContext(UserContext)
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = ({
     target,
   }) => setUserDetails({ ...userDetails, [target.name]: target.value })
   return (
-    <div className="mx-auto flex h-full w-full max-w-xs flex-col justify-center ">
+    <div className="mx-auto mt-48 flex h-[80%] w-full max-w-xs flex-col items-center justify-center align-middle ">
       <form className="mb-4 w-full rounded bg-white px-8 pt-6 pb-8 shadow-md">
         <div className="mb-4">
           <label
@@ -60,30 +65,48 @@ const Login: NextPage = () => {
         </div>
         <div className="flex items-center justify-between gap-y-14">
           <button
-            className="focus:shadow-outline rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700 focus:outline-none"
+            className="focus:shadow-outline rounded bg-blue-500 py-2 px-4  text-white hover:bg-blue-700 focus:outline-none"
             type="button"
             onClick={async () => {
               // if (!userDetails.email || !userDetails.pass) {
               // return alert('Fields Required')
               // }
+
               const res = await publicRequest.post(LOG_IN, userDetails)
-              if (res.data && res.data.err) {
-                setUserDetails({ ...userDetails, err: res.data.err })
-                return
+
+              if (!userDetails.email || !userDetails.pass) {
+                setErrModalOpen(true)
+                setUserDetails({ ...userDetails, err: 'Field Required' })
               }
-              router.push('/')
+              if (res.data && res.data.err) {
+                console.log('LOGIN_ERROR', res.data.err)
+              } else {
+                login()
+                router.push('/')
+              }
             }}
           >
             Sign In
           </button>
-          <button className="inline-block align-baseline text-lg font-bold text-blue-500 hover:text-blue-800">
+          <button className="inline-block align-baseline text-sm  text-gray-800 underline hover:text-blue-800">
             Forgot Password?
           </button>
         </div>
       </form>
       <p className="text-center text-xs text-gray-500">
-        &copy;2020 Acme Corp. All rights reserved.
+        &copy;2020 Aran Windows Corp. All rights reserved.
       </p>
+      {errModalOpen && (
+        <Modal
+          head="Login"
+          body=""
+          disable={false}
+          trigFn={() => {
+            setUserDetails({ ...userDetails, err: '' })
+            setErrModalOpen(false)
+          }}
+        ></Modal>
+      )}
     </div>
   )
 }
