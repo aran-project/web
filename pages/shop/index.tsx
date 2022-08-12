@@ -11,16 +11,17 @@ export default ({ products }: pageProps) => {
   console.log('prodyucts', products)
 
   const [actualProducts, setproducts] = useState(products)
-  const [cat, setCat] = useState({ id: 1, name: 'Doors' })
+  const [cat, setCat] = useState({ id: 1, name: 'Doors', init: true })
   const [filteredProducts, setFilteredProducts] = useState(products)
   useEffect(() => {
-    setFilteredProducts(
-      actualProducts.filter((p) =>
-        p.cateGory
-          ?.map((cat) => cat.name.toLowerCase())
-          .includes(cat.name.toLowerCase())
+    !cat.init &&
+      setFilteredProducts(
+        actualProducts.filter((p) =>
+          p.cateGory
+            ?.map((cat) => cat.name.toLowerCase())
+            .includes(cat.name.toLowerCase())
+        )
       )
-    )
     // ;(async function () {
     //   const res = await publicRequest.get(
     //     PRODUCT + 'getByCat/' + ((cat && cat.name.toString()) || 'Doors')

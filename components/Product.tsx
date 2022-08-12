@@ -81,7 +81,7 @@ export default function Product({
             <button className="block cursor-auto text-xl font-semibold text-gray-700">
               ₹{product.price}
             </button>
-            <Link href={'product/' + product.id}>
+            <Link href={'/product/' + product.id}>
               <button className="block rounded-lg bg-slate-800 py-2 px-4 text-sm  text-green-100 shadow transition duration-300 hover:text-white hover:shadow-md">
                 View
               </button>

@@ -1,5 +1,7 @@
 // import Head from 'next/head'
 
+import Footer from '../components/Footer'
+
 // const about = () => {
 //   return (
 //     <div>
@@ -149,110 +151,121 @@
 //   )
 // }
 // export default about
-export default () => (
-  <>
-    <div className="container my-24 mx-auto px-6">
-      <section className="mb-32 text-gray-800">
-        <div className="grid gap-4 lg:mb-0 lg:grid-cols-2 lg:gap-x-12">
-          <div className="mb-12 lg:mb-0">
-            <h2 className="mb-6 text-3xl font-bold">
-              Frequently asked questions
-            </h2>
+export default () => {
+  return (
+    <>
+      <div className="container my-24 mx-auto px-6">
+        <section className="mb-32 text-gray-800">
+          <div className="grid gap-4 lg:mb-0 lg:grid-cols-2 lg:gap-x-12">
+            <div className="mb-12 lg:mb-0">
+              <h2 className="mb-6 text-3xl font-bold">
+                Frequently asked questions
+              </h2>
 
-            <p className="mb-12 text-gray-500">
-              Didn't find your answer in the FAQ? Contact our sales team.
-            </p>
+              <p className="mb-12 text-gray-500">
+                Didn't find your answer in the FAQ? Contact our sales team.
+              </p>
 
-            <form>
-              <div className="form-group mb-6">
-                <input
-                  type="text"
-                  className="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-                  id="exampleInput7"
-                  placeholder="Name"
-                />
-              </div>
-              <div className="form-group mb-6">
-                <input
-                  type="email"
-                  className="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-                  id="exampleInput8"
-                  placeholder="Email address"
-                />
-              </div>
-              <div className="form-group mb-6">
-                <textarea
-                  className="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
-                  id="exampleFormControlTextarea13"
-                  rows={3}
-                  placeholder="Message"
-                ></textarea>
-              </div>
-              <div className="form-group form-check mb-6 text-center">
-                <input
-                  type="checkbox"
-                  className="form-check-input mt-1 mr-2 h-4 w-4 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-200 checked:border-blue-600 checked:bg-blue-600 focus:outline-none"
-                  id="exampleCheck87"
-                  checked
-                />
-                <label
-                  className="form-check-label inline-block text-gray-800"
-                  htmlFor="exampleCheck87"
+              <form>
+                <div className="form-group mb-6">
+                  <input
+                    type="text"
+                    className="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+                    id="exampleInput7"
+                    placeholder="Name"
+                  />
+                </div>
+                <div className="form-group mb-6">
+                  <input
+                    type="email"
+                    className="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+                    id="exampleInput8"
+                    placeholder="Email address"
+                  />
+                </div>
+                <div className="form-group mb-6">
+                  <textarea
+                    className="form-control m-0 block w-full rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+                    id="exampleFormControlTextarea13"
+                    rows={3}
+                    placeholder="Message"
+                  ></textarea>
+                </div>
+                <div className="form-group form-check mb-6 text-center">
+                  <input
+                    type="checkbox"
+                    className="form-check-input mt-1 mr-2 h-4 w-4 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-200 checked:border-blue-600 checked:bg-blue-600 focus:outline-none"
+                    id="exampleCheck87"
+                    checked
+                  />
+                  <label
+                    className="form-check-label inline-block text-gray-800"
+                    htmlFor="exampleCheck87"
+                  >
+                    Send me a copy of this message
+                  </label>
+                </div>
+                <button
+                  type="submit"
+                  className="w-full rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
                 >
-                  Send me a copy of this message
-                </label>
-              </div>
-              <button
-                type="submit"
-                className="w-full rounded bg-blue-600 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
-              >
-                Send
-              </button>
-            </form>
+                  Send
+                </button>
+              </form>
+            </div>
+
+            <div className="mb-6 md:mb-0">
+              <p className="mb-4 font-bold">
+                Anim pariatur cliche reprehenderit?
+              </p>
+              <p className="mb-12 text-gray-500">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt
+                autem numquam dolore molestias aperiam culpa alias veritatis
+                architecto eos, molestiae vitae ex eligendi libero eveniet
+                dolorem, doloremque rem aliquid perferendis.
+              </p>
+
+              <p className="mb-4 font-bold">
+                Non cupidatat skateboard dolor brunch?
+              </p>
+              <p className="mb-12 text-gray-500">
+                Distinctio corporis, iure facere ducimus quos consectetur ipsa
+                ut magnam autem doloremque ex! Id, sequi. Voluptatum magnam sed
+                fugit iusto minus et suscipit? Minima sunt at nulla tenetur,
+                numquam unde quod modi magnam ab deserunt ipsam sint aliquid
+                dolores libero repellendus cupiditate mollitia quidem dolorem
+                odit
+              </p>
+
+              <p className="mb-4 font-bold">
+                Praesentium voluptatibus temporibus consequatur non aspernatur?
+              </p>
+              <p className="mb-12 text-gray-500">
+                Minima sunt at nulla tenetur, numquam unde quod modi magnam ab
+                deserunt ipsam sint aliquid dolores libero repellendus
+                cupiditate mollitia quidem dolorem.
+              </p>
+
+              <p className="mb-4 font-bold">
+                Voluptatum magnam sed fugit iusto minus et suscipit?
+              </p>
+              <p className="mb-12 text-gray-500">
+                Laudantium perferendis, est alias iure ut veniam suscipit
+                dolorem fugit. Et ipsam corporis earum ea ut quae cum non iusto
+                blanditiis ipsum dolor eius reiciendis, velit adipisci quas.
+              </p>
+            </div>
           </div>
-
-          <div className="mb-6 md:mb-0">
-            <p className="mb-4 font-bold">
-              Anim pariatur cliche reprehenderit?
-            </p>
-            <p className="mb-12 text-gray-500">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt
-              autem numquam dolore molestias aperiam culpa alias veritatis
-              architecto eos, molestiae vitae ex eligendi libero eveniet
-              dolorem, doloremque rem aliquid perferendis.
-            </p>
-
-            <p className="mb-4 font-bold">
-              Non cupidatat skateboard dolor brunch?
-            </p>
-            <p className="mb-12 text-gray-500">
-              Distinctio corporis, iure facere ducimus quos consectetur ipsa ut
-              magnam autem doloremque ex! Id, sequi. Voluptatum magnam sed fugit
-              iusto minus et suscipit? Minima sunt at nulla tenetur, numquam
-              unde quod modi magnam ab deserunt ipsam sint aliquid dolores
-              libero repellendus cupiditate mollitia quidem dolorem odit
-            </p>
-
-            <p className="mb-4 font-bold">
-              Praesentium voluptatibus temporibus consequatur non aspernatur?
-            </p>
-            <p className="mb-12 text-gray-500">
-              Minima sunt at nulla tenetur, numquam unde quod modi magnam ab
-              deserunt ipsam sint aliquid dolores libero repellendus cupiditate
-              mollitia quidem dolorem.
-            </p>
-
-            <p className="mb-4 font-bold">
-              Voluptatum magnam sed fugit iusto minus et suscipit?
-            </p>
-            <p className="mb-12 text-gray-500">
-              Laudantium perferendis, est alias iure ut veniam suscipit dolorem
-              fugit. Et ipsam corporis earum ea ut quae cum non iusto blanditiis
-              ipsum dolor eius reiciendis, velit adipisci quas.
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
-  </>
-)
+        </section>
+      </div>
+      <div className="relative flex items-center py-5">
+        <div className="flex-grow border-t border-gray-400"></div>
+        <span className="mx-4 flex-shrink text-gray-400">
+          Let Us Know If Any
+        </span>
+        <div className="flex-grow border-t border-gray-400"></div>
+      </div>
+      <Footer full={true}></Footer>
+    </>
+  )
+}

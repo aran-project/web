@@ -6,6 +6,7 @@ import React from 'react'
 import { publicRequest, LOG_IN } from '../utils/apiEndpoints'
 import { UserContext } from '../hooks/UserContext'
 import Modal from '../components/Modals'
+import Link from 'next/link'
 
 const Login: NextPage = () => {
   const router = useRouter()
@@ -88,9 +89,11 @@ const Login: NextPage = () => {
           >
             Sign In
           </button>
-          <button className="inline-block align-baseline text-sm  text-gray-800 underline hover:text-blue-800">
-            Forgot Password?
-          </button>
+          <Link href={'/forgot-pass'}>
+            <button className="inline-block align-baseline text-sm  text-gray-800 underline hover:text-blue-800">
+              Forgot Password?
+            </button>
+          </Link>
         </div>
       </form>
       <p className="text-center text-xs text-gray-500">

@@ -109,9 +109,6 @@ const Register: NextPage = () => {
           >
             Sign Up
           </button>
-          <button className="inline-block align-baseline text-lg font-bold text-blue-500 hover:text-blue-800">
-            Forgot Password?
-          </button>
         </div>
       </form>
       <p className="text-center text-xs text-gray-500">
@@ -119,13 +116,14 @@ const Register: NextPage = () => {
       </p>
       {err && (
         <Modal
-          head={'Login Error'}
+          head={'Register Section'}
           body={err}
           trigFn={() => {
             setErr('')
           }}
-          goTo={'try again'}
+          goTo={'continue'}
           disable={false}
+          green={true}
         />
       )}
     </div>

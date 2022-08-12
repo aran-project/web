@@ -1,14 +1,16 @@
-export default () => (
-  <footer className="bg-gray-50 px-10 py-12 text-gray-600 lg:px-8">
-    <div className="mx-auto mb-12 max-w-screen-2xl lg:mb-16">
+export default ({ full = false }) => (
+  <footer
+    className={`${!full && 'bg-gray-50'} px-10 py-12 text-gray-600 lg:px-8`}
+  >
+    <span className="mx-auto mb-12 max-w-screen-2xl overflow-hidden rounded-md shadow-md lg:mb-16">
       <img
         className="h-32"
         src="/logo1.png"
         alt="UptimeMate logo"
         draggable={false}
       />
-    </div>
-    <div className="mx-auto max-w-screen-2xl px-8">
+    </span>
+    <div className="mx-auto mt-8 max-w-screen-2xl px-8">
       <div className="grid grid-cols-8 divide-y-2  divide-gray-200  md:-mx-8 md:grid-cols-9 md:divide-x-2 md:divide-y-0 lg:grid-cols-8">
         <div className="col-span-8 py-4 md:col-span-3 md:px-8 md:py-0 lg:col-span-2">
           <h5 className="text-xl font-semibold text-gray-700">Company</h5>
@@ -117,7 +119,9 @@ export default () => (
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Instagram</span>
+                  <a href="https://www.instagram.com/aran_windows/?hl=en">
+                    <span>Instagram</span>
+                  </a>
                 </a>
               </li>
               <li className="mb-2">
@@ -137,7 +141,9 @@ export default () => (
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span>Facebook</span>
+                  <a href="https://m.facebook.com/1064784970359862/">
+                    <span>Facebook</span>
+                  </a>
                 </a>
               </li>
             </ul>
@@ -145,14 +151,14 @@ export default () => (
         </div>
       </div>
     </div>
-    <div className="mx-auto mt-8 flex max-w-screen-xl flex-col items-center justify-between space-y-4 border-t-2 border-gray-200 pt-8 md:flex-row lg:mt-12">
+    <div className="mt-8 flex w-full max-w-screen-xl flex-col items-center justify-between space-y-4 border-t-2 border-gray-200 pt-8 md:flex-row lg:mt-12">
       <nav className="flex flex-wrap justify-center space-x-6">
         <a href="#" className="mb-2 text-sm font-normal hover:text-gray-400">
           Cookie settings
         </a>
       </nav>
       <p className="text-center text-sm md:text-right">
-        &copy;2020 Company. All rights reserved. | All rights reserved
+        &copy;2022 Company. All rights reserved. | All rights reserved
       </p>
     </div>
   </footer>

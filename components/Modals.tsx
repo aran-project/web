@@ -10,6 +10,7 @@ interface PropTypes {
   disable: Boolean
   mode?: 'success' | 'error' | 'warning' | 'info'
   goTo?: string
+  green?: Boolean
 }
 const Modal: React.FC<PropTypes> = ({
   head,
@@ -19,6 +20,7 @@ const Modal: React.FC<PropTypes> = ({
   goTo = 'Proceed',
   mode,
   onClose,
+  green = false,
 }) => {
   console.log(disable)
 
@@ -90,7 +92,9 @@ const Modal: React.FC<PropTypes> = ({
                       mode === 'success' ? 'bg-green-700' : 'bg-red-600'
                     } px-4 py-2 text-base font-medium text-white shadow-sm ${
                       !disable && 'hover:bg-red-700'
-                    } focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm ${
+                    } focus:outline-none focus:ring-2 ${
+                      mode === 'success' ? '' : 'focus:ring-red-500'
+                    }  focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm ${
                       disable && 'bg-opacity-50 '
                     } `}
                     onClick={() => {

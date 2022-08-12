@@ -161,15 +161,15 @@ export default function Features() {
           </div>
 
           <div className="mt-6 space-y-12  lg:space-y-0">
-            {solutions.map((callout) => (
+            {solutions.map((callout, idx) => (
               <div key={callout.name} className=" relative mb-8">
                 <h3 className="mt-6   mb-6 text-3xl text-gray-900">
                   <a href={callout.href}>
                     <span className="absolute inset-0" />
-                    {callout.name}
+                    {`${(idx +1)}. ${callout.name}`}
                   </a>
                 </h3>
-                <div className=" sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1 relative h-full w-full overflow-hidden rounded-lg bg-white hover:opacity-75 mb-6 shadow-md">
+                <div className=" sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1 relative mb-6 h-full w-full overflow-hidden rounded-lg bg-white shadow-md hover:opacity-75">
                   <img
                     src={callout.imageSrc}
                     alt={callout.imageAlt}
